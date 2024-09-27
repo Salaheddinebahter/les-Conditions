@@ -7,7 +7,7 @@
 
  if (x%2==0){
      printf("le nombre est pair ");
- } 
+ } r
  else 
      printf("le nombre est impair");
      
