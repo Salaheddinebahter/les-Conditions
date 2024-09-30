@@ -2,25 +2,27 @@
 
 int main()
 {
-   int x, y ;
+      int x ;
       printf("entrez le nombre d'éléments d'un tableau: ");
       scanf("%d",&x);
-    int T[x]  ;
+     
+      int T[x]  ;
       for(int i=0 ; i<x ; i++ ){
           printf("enter les nombre:");
-          scanf("%d",&y);
-          T[i]=y;
+          scanf("%d",&T[i]);
       }
+      
       for(int i=0 ; i<x ; i++ ) {
-          printf("[%d]\n ", T[i] );
+          printf("[%d]\n", T[i] );
       }
-      int max ;
-           max = T[x];
+      
+      int min = T[0];
+      
       for(int i=0 ; i<x ; i++ ){
-        if(max < T[i])
-           max = T[i];
+        if(min > T[i])
+           min = T[i];
       }
-    printf("Le plus grand nombre dans cette matrice est : %d" , max);
+    printf("Le plus petit nombre dans cette matrice est : %d" , min);
       
   return 0;  
 }
