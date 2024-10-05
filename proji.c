@@ -4,13 +4,13 @@
 #define max_reserv 300
 
 typedef struct {
-char fname[25];
-char lname[25];
-char nphone[20];
-int age;
-char status[20];
-char date[15];
-int id;
+    char fname[25];
+    char lname[25];
+    char nphone[20];
+    int age;
+    char status[20];
+    char date[15];
+    int id;
 } reserv;
 
 reserv reservations[max_reserv];
@@ -57,8 +57,8 @@ void initReservations() {
     strcpy(reservations[4].date, "2024-10-10");
     reservations[4].id = 5;
 
-    strcpy(reservations[5].fname, "Michael");
-    strcpy(reservations[5].lname, "Wilson");
+    strcpy(reservations[5].fname, "aya");
+    strcpy(reservations[5].lname, "nasihe");
     strcpy(reservations[5].nphone, "654987321");
     reservations[5].age = 35;
     strcpy(reservations[5].status, "Processed");
@@ -110,17 +110,17 @@ void addReservation() {
     newReserv.id = numbreserv + 1;
 
     printf("Enter first name: ");
-      scanf("%s", newReserv.fname);
+    scanf("%s", newReserv.fname);
     printf("Enter last name: ");
-      scanf("%s", newReserv.lname);
+    scanf("%s", newReserv.lname);
     printf("Enter phone number: ");
-      scanf("%s", newReserv.nphone);
+    scanf("%s", newReserv.nphone);
     printf("Enter age: ");
-      scanf("%d", &newReserv.age);
-    printf("Enter the status (valid/report/annual/trait): ");
-      scanf("%s", newReserv.status);
+    scanf("%d", &newReserv.age);
+    printf("Enter the status (Verified/Postponed/Cancelled/processed): ");
+    scanf("%s", newReserv.status);
     printf("Enter your reservation date (yyyy-mm-dd): ");
-      scanf("%s", newReserv.date);
+    scanf("%s", newReserv.date);
 
     reservations[numbreserv] = newReserv;
     numbreserv++;
@@ -128,70 +128,70 @@ void addReservation() {
 }
 
 void editReservation() {
-int id, choice;
+    int id, choice;
     printf("Enter the reservation ID to be updated: ");
     scanf("%d", &id);
 
     for (int i = 0; i < numbreserv; i++) {
-      if (reservations[i].id == id) {
-         do {
-            printf("Select the field you want to edit:\n");
-            printf("1. First Name\n");
-            printf("2. Last Name\n");
-            printf("3. Phone Number\n");
-            printf("4. Age\n");
-            printf("5. Status\n");
-            printf("6. Date\n");
-            printf("7. Back to Main Menu\n");
-            printf("Enter your choice: ");
+        if (reservations[i].id == id) {
+            do {
+                printf("Select the field you want to edit:\n");
+                printf("1. First Name\n");
+                printf("2. Last Name\n");
+                printf("3. Phone Number\n");
+                printf("4. Age\n");
+                printf("5. Status\n");
+                printf("6. Date\n");
+                printf("7. Back to Main Menu\n");
+                printf("Enter your choice: ");
                 scanf("%d", &choice);
 
-            switch (choice) {
-            case 1:
-                printf("Enter new first name: ");
+                switch (choice) {
+                    case 1:
+                        printf("Enter new first name: ");
                         scanf("%s", reservations[i].fname);
-                printf("First name updated successfully.\n");
-                break;
-            case 2:
-                printf("Enter new last name: ");
-                        scanf("%s", reservations[i].lname);
-                printf("Last name updated successfully.\n");
-                break;
-            case 3:
-                printf("Enter new phone number: ");
-                        scanf("%s", reservations[i].nphone);
-                printf("Phone number updated successfully.\n");
-                break;
-            case 4:
-                printf("Enter new age: ");
-                        scanf("%d", &reservations[i].age);
-                printf("Age updated successfully.\n");
+                        printf("First name updated successfully.\n");
                         break;
-            case 5:
-                printf("Enter the new status: ");
+                    case 2:
+                        printf("Enter new last name: ");
+                        scanf("%s", reservations[i].lname);
+                        printf("Last name updated successfully.\n");
+                        break;
+                    case 3:
+                        printf("Enter new phone number: ");
+                        scanf("%s", reservations[i].nphone);
+                        printf("Phone number updated successfully.\n");
+                        break;
+                    case 4:
+                        printf("Enter new age: ");
+                        scanf("%d", &reservations[i].age);
+                        printf("Age updated successfully.\n");
+                        break;
+                    case 5:
+                        printf("Enter the new status: ");
                         scanf("%s", reservations[i].status);
-                printf("Status updated successfully.\n");
-                break;
-            case 6:
-                printf("Enter new date (YYYY-MM-DD): ");
+                        printf("Status updated successfully.\n");
+                        break;
+                    case 6:
+                        printf("Enter new date (YYYY-MM-DD): ");
                         scanf("%s", reservations[i].date);
-                printf("Date updated successfully.\n");
-                break;
-            case 7:
-                printf("Back to main menu.\n");
-                break;
+                        printf("Date updated successfully.\n");
+                        break;
+                    case 7:
+                        printf("Back to main menu.\n");
+                        break;
                     default:
                         printf("The option is invalid.\n");
                 }
-        } while (choice != 7);
-             return;
+            } while (choice != 7);
+            return;
         }
     }
     printf("No reservation found with this ID.\n");
 }
 
 void deleteReservation() {
-int id;
+    int id;
     printf("Enter the reservation ID to delete: ");
     scanf("%d", &id);
 
@@ -209,45 +209,33 @@ int id;
 }
 
 void viewReservation() {
-       printf("View reservations:\n");
-for (int i=0; i<numbreserv; i++){
-    printf("___________________________________________\n");
-    printf("resrvation id: %d\n",reservations[i].id);
-    printf("first name: %s\n",reservations[i].fname);
-    printf("last name: %s\n",reservations[i].lname);
-    printf("phone number: %s\n",reservations[i].nphone);
-    printf("age: %d\n",reservations[i].age);
-    printf("reservation status: %s\n",reservations[i].status);
-    printf("reservation date: %s\n",reservations[i].date);
-    printf("___________________________________________\n");
-}
-}
-
-void sortReservationsByName() {
-    reserv temp;
-  for (int i = 0; i < numbreserv - 1; i++) {
-  for (int j = i + 1; j < numbreserv; j++){
-    if (strcmp(reservations[i].fname, reservations[j].fname) > 0){
-                temp = reservations[i];
-                reservations[i] = reservations[j];
-                reservations[j] = temp;
-            }
+    
+        printf("___________________________________________\n");
+        printf("Here are the reservation details:\n");
+    for (int i = 0; i < numbreserv; i++) {
+            
+            printf("Reservation ID: %d\n", reservations[i].id);
+            printf("First Name: %s\n", reservations[i].fname);
+            printf("Last Name: %s\n", reservations[i].lname);
+            printf("Phone Number: %s\n", reservations[i].nphone);
+            printf("Age: %d\n", reservations[i].age);
+            printf("Reservation Status: %s\n", reservations[i].status);
+            printf("Reservation Date: %s\n", reservations[i].date);
+            printf("____________________________________________\n");
         }
     }
-    printf("The reservations have been sorted by first name.\n");
-}
 
 void reservationStatistics() {
     int verified = 0, processed = 0, postponed = 0, cancelled = 0;
     for (int i = 0; i < numbreserv; i++) {
-      if (strcmp(reservations[i].status, "Verified") == 0) {
-               verified++;
+        if (strcmp(reservations[i].status, "Verified") == 0) {
+            verified++;
         } else if (strcmp(reservations[i].status, "Processed") == 0) {
-               processed++;
+            processed++;
         } else if (strcmp(reservations[i].status, "Postponed") == 0) {
-               postponed++;
+            postponed++;
         } else if (strcmp(reservations[i].status, "Cancelled") == 0) {
-               cancelled++;
+            cancelled++;
         }
     }
     printf("Reservation Statistics:\n");
@@ -268,9 +256,8 @@ int main() {
         printf("2. Edit Reservation\n");
         printf("3. Delete Reservation\n");
         printf("4. View Reservation Details\n");
-        printf("5. Sort Reservations by Name\n");
-        printf("6. Statistics\n");
-        printf("7. Exit Program\n");
+        printf("5. Statistics\n");
+        printf("6. Exit Program\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -288,18 +275,15 @@ int main() {
                 viewReservation();
                 break;
             case 5:
-                sortReservationsByName();
-                break;
-            case 6:
                 reservationStatistics();
                 break;
-            case 7:
-                printf("Exiting program.\n");
+            case 6:
+              printf("Exiting program.\n");
                 break;
             default:
                 printf("Invalid option!\n");
         }
-    } while (choice != 7);
+    } while (choice != 6);
 
     return 0;
 }
